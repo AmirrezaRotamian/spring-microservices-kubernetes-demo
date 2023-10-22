@@ -1,5 +1,10 @@
 # Microservices with Spring Boot and Spring Cloud on Kubernetes Demo Project - [KubePay]
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=teamlead_spring-microservices-kubernetes-demo&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=teamlead_spring-microservices-kubernetes-demo)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=teamlead_spring-microservices-kubernetes-demo&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=teamlead_spring-microservices-kubernetes-demo)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=teamlead_spring-microservices-kubernetes-demo&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=teamlead_spring-microservices-kubernetes-demo)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=teamlead_spring-microservices-kubernetes-demo&metric=coverage)](https://sonarcloud.io/summary/new_code?id=teamlead_spring-microservices-kubernetes-demo)
+
 ## Overview
 This project is a demonstration of a simple financial system where users can:
 - Register
@@ -278,7 +283,7 @@ For enhancing the realism and reliability of these tests, I highly recommend int
 public void whenTopUpRequested_thenWalletBalanceIncreases(...)
 ```
 
-While this project doesn't demonstrate the usage of any database for simplicity, we'll reference another demo project that delves deeply into that technique.
+While this project doesn't demonstrate the usage of any database for simplicity, I'll reference another demo project that delves deeply into that technique.
 
 ## Building & Running
 
