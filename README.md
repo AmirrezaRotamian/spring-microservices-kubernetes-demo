@@ -3,7 +3,6 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=teamlead_spring-microservices-kubernetes-demo&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=teamlead_spring-microservices-kubernetes-demo)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=teamlead_spring-microservices-kubernetes-demo&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=teamlead_spring-microservices-kubernetes-demo)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=teamlead_spring-microservices-kubernetes-demo&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=teamlead_spring-microservices-kubernetes-demo)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=teamlead_spring-microservices-kubernetes-demo&metric=coverage)](https://sonarcloud.io/summary/new_code?id=teamlead_spring-microservices-kubernetes-demo)
 
 ## Overview
 This project is a demonstration of a simple financial system where users can:
@@ -35,18 +34,19 @@ The following graph illustrates the architecture described above.
 graph TD
 
 subgraph k8s[Kubepay: Kubernetes / Docker]
-    gateway[Gateway]
-    auth[Auth Service]
-    user[User Service]
-    wallet[Wallet Service]
-    zipkin[Zipkin]
+    gateway[Gateway:8100, path=/**]
+    auth[Auth Service:8101]
+    user[User Service:8102]
+    wallet[Wallet Service:8103]
+    zipkin[Zipkin:9411]
 
-    gateway --> auth
-    gateway --> user
-    gateway --> wallet
+    gateway --> |/auth/**| auth
+    gateway --> |/user/**| user
+    gateway --> |/wallet/**| wallet
     auth --> user
     wallet --> user
     wallet --> auth
+    wallet -.-> |/billing/**\nRate Limited| gateway
     user --> wallet
     user --> auth
     
