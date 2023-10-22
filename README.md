@@ -33,28 +33,26 @@ The following graph illustrates the architecture described above.
 ```mermaid
 graph TD
 
-subgraph k8s[Kubepay: Kubernetes / Docker]
-    gateway[Gateway:8100, path=/**]
-    auth[Auth Service:8101]
-    user[User Service:8102]
-    wallet[Wallet Service:8103]
-    zipkin[Zipkin:9411]
+gateway[<b>Gateway Service</b>\nhttp://gateway:8100, path=/**]
+auth[<b>Auth Service</b>\nhttp://auth:8101]
+user[<b>User Service</b>\nhttp://user:8102]
+wallet[<b>Wallet Service</b>\nhttp://wallet:8103]
+zipkin[<b>Zipkin UI</b>\nhttp://zipkin:9411]
 
-    gateway --> |/auth/**| auth
-    gateway --> |/user/**| user
-    gateway --> |/wallet/**| wallet
-    auth --> user
-    wallet --> user
-    wallet --> auth
-    wallet -.-> |/billing/**\nRate Limited| gateway
-    user --> wallet
-    user --> auth
-    
-    gateway -.-> zipkin
-    auth -.-> zipkin
-    user -.-> zipkin
-    wallet -.-> zipkin    
-end
+gateway --> |/auth/**| auth
+gateway --> |/user/**| user
+gateway --> |/wallet/**| wallet
+auth --> |createUser, getUserInfo| user
+wallet --> |getUserInfo| user
+wallet --> |getServiceToken| auth
+wallet -.-> |<b>External Service</b>\ntopUp\npath=/billing/**\nRate Limited| gateway
+user --> |createWallet| wallet
+user --> |getServiceToken| auth
+
+gateway -.-> zipkin
+auth -.-> zipkin
+user -.-> zipkin
+wallet -.-> |Traces| zipkin    
 
 style gateway fill:#e2e2e2,stroke:#333,stroke-width:2px
 style auth fill:#e2e2e2,stroke:#333,stroke-width:2px
@@ -221,9 +219,6 @@ For instance, an error response indicating a missing wallet would look like:
   "type": "WALLET_NOT_FOUND"
 }
 ```
-
-
-Sure, here's the revised sentence:
 
 To get a comprehensive view of how requests traverse through microservices, the project uses `micrometer` and `opentelemetry-exporter-zipkin` for tracing. With this, you can visualize and trace the entire path of requests, from their entry points down to the deepest service calls.
 
