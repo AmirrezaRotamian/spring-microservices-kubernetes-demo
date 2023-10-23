@@ -35,13 +35,8 @@ import java.io.Serializable;
 })
 public abstract class WalletApiException extends ApiException implements Serializable {
 
-    public WalletApiException(String message) {
+    protected WalletApiException(String message) {
         super(message);
-    }
-
-    @Override
-    public String getMessage() {
-        return super.getMessage();
     }
 
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)

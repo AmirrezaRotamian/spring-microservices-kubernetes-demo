@@ -13,7 +13,7 @@ import java.io.InputStream;
 @UtilityClass
 public class ObjectMapperWrapper {
 
-    private final static ObjectMapper mapper = ObjectMapperBuilder.build();
+    private static final ObjectMapper mapper = ObjectMapperBuilder.build();
 
     public static <T> byte[] toJson(T obj, Class<T> tClass) throws IOException {
         return mapper.writerFor(tClass).writeValueAsBytes(obj);

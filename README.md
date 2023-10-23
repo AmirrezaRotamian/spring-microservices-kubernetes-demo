@@ -1,8 +1,11 @@
-# Microservices with Spring Boot and Spring Cloud on Kubernetes Demo Project - [KubePay]
+# Microservices with Spring Boot and Spring Cloud on Kubernetes Demo Project — KubePay
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=teamlead_spring-microservices-kubernetes-demo&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=teamlead_spring-microservices-kubernetes-demo)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=teamlead_spring-microservices-kubernetes-demo&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=teamlead_spring-microservices-kubernetes-demo)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=teamlead_spring-microservices-kubernetes-demo&metric=bugs)](https://sonarcloud.io/summary/new_code?id=teamlead_spring-microservices-kubernetes-demo)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=teamlead_spring-microservices-kubernetes-demo&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=teamlead_spring-microservices-kubernetes-demo)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=teamlead_spring-microservices-kubernetes-demo&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=teamlead_spring-microservices-kubernetes-demo)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=teamlead_spring-microservices-kubernetes-demo&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=teamlead_spring-microservices-kubernetes-demo)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=teamlead_spring-microservices-kubernetes-demo&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=teamlead_spring-microservices-kubernetes-demo)
 
 ## Overview
 This project is a demonstration of a simple financial system where users can:
@@ -26,7 +29,7 @@ This project is a demonstration of a simple financial system where users can:
 
 ## Architecture
 
-This project employs a microservices architecture containerized within Kubernetes (k8s). The core services—Gateway, Auth, User, and Wallet—interact with each other to fulfill various functionalities. All services are instrumented to send trace data to Zipkin for distributed tracing and monitoring.
+This project employs a microservices architecture containerized within Kubernetes (k8s). The core services — Gateway, Auth, User, and Wallet—interact with each other to fulfill various functionalities. All services are instrumented to send trace data to Zipkin for distributed tracing and monitoring.
 
 The following graph illustrates the architecture described above.
 

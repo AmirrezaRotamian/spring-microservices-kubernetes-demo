@@ -1,12 +1,12 @@
 package pro.teamlead.kubepay.auth.api;
 
-public interface AuthApiMethodDictionary {
+public final class AuthApiMethodDictionary {
 
-    String AUTH_SIGNUP = "/signup";
+    public static final String AUTH_SIGNUP = "/signup";
 
-    String AUTH_LOGIN = "/login";
+    public static final String AUTH_LOGIN = "/login";
 
-    String AUTH_LOGOUT = "/logout";
+    public static final String AUTH_LOGOUT = "/logout";
 
-    String SERVICE_TOKEN = "/service/{key}";
+    public static final String SERVICE_TOKEN = "/service/{key}";
 }

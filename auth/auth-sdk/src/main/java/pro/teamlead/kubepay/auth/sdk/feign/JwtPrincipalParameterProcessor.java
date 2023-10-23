@@ -14,9 +14,6 @@ public class JwtPrincipalParameterProcessor implements AnnotatedParameterProcess
 
     private static final Class<JwtPrincipal> ANNOTATION = JwtPrincipal.class;
 
-    public JwtPrincipalParameterProcessor() {
-    }
-
     public Class<? extends Annotation> getAnnotationType() {
         return ANNOTATION;
     }

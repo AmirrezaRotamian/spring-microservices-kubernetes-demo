@@ -6,10 +6,5 @@ public abstract class ApiException extends RuntimeException {
         super(message);
     }
 
-    @Override
-    public String getMessage() {
-        return super.getMessage();
-    }
-
     public abstract String getType();
 }

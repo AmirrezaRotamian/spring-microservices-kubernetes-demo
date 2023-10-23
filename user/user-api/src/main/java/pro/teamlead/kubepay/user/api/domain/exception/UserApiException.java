@@ -20,13 +20,8 @@ import java.io.Serializable;
 })
 public abstract class UserApiException extends ApiException implements Serializable {
 
-    public UserApiException(String message) {
+    protected UserApiException(String message) {
         super(message);
-    }
-
-    @Override
-    public String getMessage() {
-        return super.getMessage();
     }
 
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)

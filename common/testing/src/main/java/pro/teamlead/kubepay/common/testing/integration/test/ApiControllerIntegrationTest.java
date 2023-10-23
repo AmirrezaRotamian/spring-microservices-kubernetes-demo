@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static java.lang.String.format;
 
 @IntegrationTest
 @WireMockEnabled
@@ -32,18 +33,22 @@ public class ApiControllerIntegrationTest {
     }
 
     protected String customToken(Authority ... authorities) {
-        return "Bearer " + provider.createToken(userName(), authorities);
+        return asHeaderValue(provider.createToken(userName(), authorities));
     }
 
     protected String serviceToken() {
-        return "Bearer " + provider.createToken(userName(), Authority.ROLE_SERVICE);
+        return asHeaderValue(provider.createToken(userName(), Authority.ROLE_SERVICE));
     }
 
     protected String userToken() {
-        return "Bearer " + provider.createToken(userName(), Authority.ROLE_USER);
+        return asHeaderValue(provider.createToken(userName(), Authority.ROLE_USER));
     }
 
     protected String userName() {
         return "user";
+    }
+
+    protected String asHeaderValue(String token) {
+        return format("Bearer %s", token);
     }
 }

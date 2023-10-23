@@ -24,6 +24,8 @@ public class SpringSecurityConfiguration {
     @Value("${management.endpoints.web.base-path}")
     private String actuatorPath;
 
+    private static final String PATH_MATCHER = "%s/**";
+
     @Bean
     @ConditionalOnMissingBean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -31,9 +33,9 @@ public class SpringSecurityConfiguration {
         http
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers(format("%s/**", restApiDocPath)).permitAll()
-                        .requestMatchers(format("%s/**", swaggerPath)).permitAll()
-                        .requestMatchers(format("%s/**", actuatorPath)).permitAll()
+                        .requestMatchers(format(PATH_MATCHER, restApiDocPath)).permitAll()
+                        .requestMatchers(format(PATH_MATCHER, swaggerPath)).permitAll()
+                        .requestMatchers(format(PATH_MATCHER, actuatorPath)).permitAll()
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults()))

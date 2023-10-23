@@ -1,12 +1,12 @@
 package pro.teamlead.kubepay.user.api;
 
-public interface UserApiMethodDictionary {
+public final class UserApiMethodDictionary {
 
-    String CREATE_USER = "/create";
+    public static final String CREATE_USER = "/create";
 
-    String GET_PASSWORD_HASH = "/getPasswordHash/{user}";
+    public static final String GET_PASSWORD_HASH = "/getPasswordHash/{user}";
 
-    String GET_MY_INFO = "/me";
+    public static final String GET_MY_INFO = "/me";
 
-    String GET_USER_INFO = "/info/{user}";
+    public static final String GET_USER_INFO = "/info/{user}";
 }

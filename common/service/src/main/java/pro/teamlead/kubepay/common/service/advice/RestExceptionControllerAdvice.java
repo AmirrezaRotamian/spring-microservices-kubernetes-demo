@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 public class RestExceptionControllerAdvice extends ResponseEntityExceptionHandler {
 
-    public final static String DEFAULT_ERROR_TYPE = "ERROR";
+    public static final String DEFAULT_ERROR_TYPE = "ERROR";
 
     @ExceptionHandler(ApiException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)

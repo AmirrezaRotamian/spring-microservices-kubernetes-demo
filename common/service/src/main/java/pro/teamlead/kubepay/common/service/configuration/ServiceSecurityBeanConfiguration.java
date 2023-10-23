@@ -9,12 +9,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 @Configuration
 @ConditionalOnWebApplication
@@ -28,15 +28,9 @@ public class ServiceSecurityBeanConfiguration {
         Map<String, PasswordEncoder> encoders = new HashMap<>();
         encoders.put(idForEncode, new BCryptPasswordEncoder());
         encoders.put("noop", NoOpPasswordEncoder.getInstance());
-        encoders.put("sha256", new StandardPasswordEncoder());
         return new DelegatingPasswordEncoder(idForEncode, encoders);
 
     }
-
-//    @Bean("AuthorizationLogic")
-//    public AuthorizationLogic AuthorizationLogic() {
-//        return new AuthorizationLogic();
-//    }
 
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter() {

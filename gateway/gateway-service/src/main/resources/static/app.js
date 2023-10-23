@@ -128,6 +128,4 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	toggleUI(false);
-
-	// setInterval(fetchWalletBalance, 1000);
 });

@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class SimpleInMemoryRateLimiter implements org.springframework.cloud.gateway.filter.ratelimit.RateLimiter<Void> {
 
-    private final double PERMITS_PER_MINUTE = 1.0/60;
+    private final double permitsPerMinute = 1.0/60;
 
     private final Cache<String, RateLimiter> rateLimiterCache = CacheBuilder.newBuilder()
             .expireAfterAccess(1, TimeUnit.MINUTES) // Evict entries 1 minute after last access
@@ -23,7 +23,7 @@ public class SimpleInMemoryRateLimiter implements org.springframework.cloud.gate
 
     public Mono<Response> isAllowed(String routeId, String id) {
         try {
-            RateLimiter limiter = rateLimiterCache.get(id, () -> RateLimiter.create(PERMITS_PER_MINUTE));
+            RateLimiter limiter = rateLimiterCache.get(id, () -> RateLimiter.create(permitsPerMinute));
             return Mono.just(new Response(limiter.tryAcquire(), Collections.emptyMap()));
         } catch (ExecutionException e) {
             return Mono.just(new Response(false, Collections.emptyMap()));

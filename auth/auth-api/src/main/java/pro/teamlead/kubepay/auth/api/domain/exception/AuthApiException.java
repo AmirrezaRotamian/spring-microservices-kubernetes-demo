@@ -27,11 +27,6 @@ public abstract class AuthApiException extends ApiException implements Serializa
         super(message);
     }
 
-    @Override
-    public String getMessage() {
-        return super.getMessage();
-    }
-
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
     public abstract String getType();
 
