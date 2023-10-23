@@ -1,5 +1,9 @@
 package pro.teamlead.kubepay.wallet.api;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class WalletApiMethodDictionary {
 
     public static final String WALLET_CREATE = "/create";

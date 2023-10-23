@@ -1,12 +1,16 @@
 package pro.teamlead.kubepay.auth.sdk.util;
 
-public interface JwtFields {
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-    String SCOPE = "scope";
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class JwtFields {
 
-    String USER = "sub";
+    public static final String SCOPE = "scope";
 
-    String ISSUED_AT = "iat";
+    public static final String USER = "sub";
 
-    String EXPIRE_AT = "exp";
+    public static final String ISSUED_AT = "iat";
+
+    public static final String EXPIRE_AT = "exp";
 }

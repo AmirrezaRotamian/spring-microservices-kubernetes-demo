@@ -15,14 +15,7 @@ public class WalletClientConfiguration {
 
     @Bean
     public Contract feignContract() {
-
         return new JwtPrincipalFeignContract();
-
-//        List<AnnotatedParameterProcessor> argumentResolvers = new ArrayList();
-//        argumentResolvers.add(new RequestHeaderParameterProcessor());
-//        argumentResolvers.add(new JwtPrincipalParameterProcessor());
-//        ...
-//        return new SpringMvcContract(argumentResolvers);
     }
 
     @Bean

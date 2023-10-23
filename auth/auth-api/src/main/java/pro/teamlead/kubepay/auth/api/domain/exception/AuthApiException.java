@@ -23,7 +23,7 @@ import java.io.Serializable;
 })
 public abstract class AuthApiException extends ApiException implements Serializable {
 
-    public AuthApiException(String message) {
+    protected AuthApiException(String message) {
         super(message);
     }
 

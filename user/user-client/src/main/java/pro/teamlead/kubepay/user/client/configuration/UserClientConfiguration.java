@@ -16,11 +16,15 @@ public class UserClientConfiguration {
     @Bean
     public Contract feignContract() {
 
-//        List<AnnotatedParameterProcessor> argumentResolvers = new ArrayList();
-//        argumentResolvers.add(new RequestHeaderParameterProcessor());
-//        argumentResolvers.add(new JwtPrincipalParameterProcessor());
-//        ...
-//        return new SpringMvcContract(argumentResolvers);
+        // The commented-out code below is an alternative way to create a Feign Contract
+        // using individual argument resolvers, including the JwtPrincipalParameterProcessor.
+        // It's an alternative approach to using the JwtPrincipalFeignContract.
+        //
+        // List<AnnotatedParameterProcessor> argumentResolvers = new ArrayList();
+        // argumentResolvers.add(new RequestHeaderParameterProcessor());
+        // argumentResolvers.add(new JwtPrincipalParameterProcessor());
+        // ...
+        // return new SpringMvcContract(argumentResolvers);
 
         return new JwtPrincipalFeignContract();
     }

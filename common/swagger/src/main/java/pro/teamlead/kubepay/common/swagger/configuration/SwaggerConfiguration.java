@@ -23,12 +23,6 @@ import java.util.List;
 @ConditionalOnClass(OpenAPI.class)
 public class SwaggerConfiguration {
 
-    @Autowired(required = false)
-    private BuildProperties buildProperties;
-
-    @Autowired(required = false)
-    private GitProperties gitProperties;
-
     @Value("${spring.application.name}")
     private String serviceName;
 
@@ -40,7 +34,8 @@ public class SwaggerConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public OpenAPI openAPI() {
+    public OpenAPI openAPI(@Autowired(required = false) BuildProperties buildProperties,
+                           @Autowired(required = false) GitProperties gitProperties) {
 
         var version = buildProperties != null ?
                 buildProperties.getVersion() : "?";

@@ -1,5 +1,9 @@
 package pro.teamlead.kubepay.user.api;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class UserApiMethodDictionary {
 
     public static final String CREATE_USER = "/create";

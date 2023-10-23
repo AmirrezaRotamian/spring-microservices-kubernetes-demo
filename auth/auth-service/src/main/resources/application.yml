@@ -3,6 +3,9 @@ spring:
     name: auth
     description: Authorization Service API
 
+security:
+  customFilterChain: true
+
 management:
   endpoints:
     web:

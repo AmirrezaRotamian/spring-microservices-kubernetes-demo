@@ -29,7 +29,7 @@ This project is a demonstration of a simple financial system where users can:
 
 ## Architecture
 
-This project employs a microservices architecture containerized within Kubernetes (k8s). The core services — Gateway, Auth, User, and Wallet—interact with each other to fulfill various functionalities. All services are instrumented to send trace data to Zipkin for distributed tracing and monitoring.
+This project employs a microservices architecture containerized within Kubernetes (k8s). The core services — Gateway, Auth, User, and Wallet — interact with each other to fulfill various functionalities. All services are instrumented to send trace data to Zipkin for distributed tracing and monitoring.
 
 The following graph illustrates the architecture described above.
 
@@ -48,7 +48,7 @@ gateway --> |/wallet/**| wallet
 auth --> |createUser, getUserInfo| user
 wallet --> |getUserInfo| user
 wallet --> |getServiceToken| auth
-wallet -.-> |<b>External Service</b>\ntopUp\npath=/billing/**\nRate Limited| gateway
+wallet -.-> |<b>External Service</b>\npath=/billing/**\nRate Limited\n\nperformTopUp| gateway
 user --> |createWallet| wallet
 user --> |getServiceToken| auth
 
@@ -282,6 +282,14 @@ public void whenTopUpRequested_thenWalletBalanceIncreases(...)
 ```
 
 While this project doesn't demonstrate the usage of any database for simplicity, I'll reference another demo project that delves deeply into that technique.
+
+### Swagger / OpenAPI / OAS 3.0 Docs
+
+Project's API documentation, powered by OpenAPI Specification (OAS) 3.0, offers an interactive UI to explore various service endpoints. Select your desired service from the top-left, and note that for security, only the `@PublicApiController` spec is visible by default. Relevant Git and build details are also provided for your reference.
+
+![Screencast](gateway/gateway-service/src/main/resources/static/swagger.png)
+
+To visit the docs, navigate to `/swagger-ui` in any service, e.g. http://localhost:8100/swagger-ui.
 
 ## Building & Running
 

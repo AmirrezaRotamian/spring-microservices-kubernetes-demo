@@ -1,9 +1,11 @@
 package pro.teamlead.kubepay.common.service.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,6 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import static java.lang.String.format;
 
 @Configuration
+@ConditionalOnProperty(prefix = "security", name = "customFilterChain", havingValue = "false", matchIfMissing = true)
 public class SpringSecurityConfiguration {
 
     @Value("${springdoc.api-docs.path}")
@@ -27,7 +30,7 @@ public class SpringSecurityConfiguration {
     private static final String PATH_MATCHER = "%s/**";
 
     @Bean
-    @ConditionalOnMissingBean
+    @Order(Ordered.HIGHEST_PRECEDENCE)
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // @formatter:off
         http
