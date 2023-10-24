@@ -1,10 +1,10 @@
 package pro.teamlead.kubepay.common.testing.integration.configuration;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Constants {
+
+    private Constants() {
+
+    }
 
     public static final String SPRING_TEST_PROFILE_NAME = "test";
 

@@ -22,7 +22,7 @@ public class TestPropertiesInitializer implements ApplicationContextInitializer<
         final ConfigurableEnvironment environment = applicationContext.getEnvironment();
         final MutablePropertySources propertySources = environment.getPropertySources();
 
-        if (environment.getProperty(ENV_PROPERTY_IS_WIREMOCK_ENABLED, Boolean.class, false)) {
+        if (environment.getProperty(ENV_PROPERTY_IS_WIREMOCK_ENABLED, boolean.class, false)) {
             WireMockServer mockServer = WireMockTestConfiguration.getMockServer();
             Map<String, Object> map = Map.of(
                     ENV_PROPERTY_WIREMOCK_URL,

@@ -285,7 +285,7 @@ While this project doesn't demonstrate the usage of any database for simplicity,
 
 ### Swagger / OpenAPI / OAS 3.0 Docs
 
-Project's API documentation, powered by OpenAPI Specification (OAS) 3.0, offers an interactive UI to explore various service endpoints. Select your desired service from the top-left, and note that for security, only the `@PublicApiController` spec is visible by default. Relevant Git and build details are also provided for your reference.
+Project's API documentation, powered by OpenAPI Specification (OAS) 3.0, offers an interactive UI to explore various service endpoints. Select your desired service from the top-right, and note that for security, only the `@PublicApiController` spec is visible by default. Relevant Git and build details are also provided for your reference.
 
 ![Screencast](gateway/gateway-service/src/main/resources/static/swagger.png)
 
@@ -433,6 +433,7 @@ Thank you for considering a contribution to this project! I appreciate any help 
 - **Front-end Development**: Set up a separate folder dedicated to building a front end using a popular framework (e.g., React or Vue).
 - **Educational Gradle Configuration**: Integrate a Gradle configuration for educational purposes.
 - **Testing Infrastructure**: Utilize TestContainers and DB-Runner for improved testing, especially for database interactions and integration tests.
+- **Logs, Traces, Metrics**: Implement Grafana, Loki, Tempo, Logback for better logging and tracing. 
 
 ### Steps to Contribute:
 

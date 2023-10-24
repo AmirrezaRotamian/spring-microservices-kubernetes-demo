@@ -1,39 +1,22 @@
 package pro.teamlead.kubepay.wallet.client.configuration;
 
+import pro.teamlead.kubepay.common.client.configuration.CommonFeignClientConfiguration;
 import pro.teamlead.kubepay.wallet.client.component.WalletClientErrorDecoder;
 import pro.teamlead.kubepay.wallet.client.component.WalletClientRequestInterceptor;
 import feign.codec.ErrorDecoder;
-import org.zalando.logbook.Logbook;
-import org.zalando.logbook.openfeign.FeignLogbookLogger;
-import pro.teamlead.kubepay.auth.sdk.feign.JwtPrincipalFeignContract;
-import feign.Contract;
-import feign.Logger;
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
 
-public class WalletClientConfiguration {
+public class WalletClientConfiguration extends CommonFeignClientConfiguration {
 
     @Bean
-    public Contract feignContract() {
-        return new JwtPrincipalFeignContract();
-    }
-
-    @Bean
-    public Logger logger(Logbook logbook) {
-        return new FeignLogbookLogger(logbook);
-    }
-
-    @Bean
-    public Logger.Level loglevel() {
-        return Logger.Level.FULL;
-    }
-
-    @Bean
+    @Override
     public ErrorDecoder errorDecoder() {
         return new WalletClientErrorDecoder();
     }
 
     @Bean
+    @Override
     public RequestInterceptor requestInterceptor() {
         return new WalletClientRequestInterceptor();
     }

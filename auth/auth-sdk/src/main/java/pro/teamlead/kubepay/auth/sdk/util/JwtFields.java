@@ -1,10 +1,9 @@
 package pro.teamlead.kubepay.auth.sdk.util;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class JwtFields {
+
+    private JwtFields() {
+    }
 
     public static final String SCOPE = "scope";
 

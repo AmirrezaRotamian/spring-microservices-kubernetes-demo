@@ -4,6 +4,7 @@ spring:
     description: Authorization Service API
 
 security:
+  customServicePrincipal: true
   customFilterChain: true
 
 management:

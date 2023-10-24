@@ -1,10 +1,9 @@
 package pro.teamlead.kubepay.auth.api;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AuthApiMethodDictionary {
+
+    private AuthApiMethodDictionary() {
+    }
 
     public static final String AUTH_SIGNUP = "/signup";
 

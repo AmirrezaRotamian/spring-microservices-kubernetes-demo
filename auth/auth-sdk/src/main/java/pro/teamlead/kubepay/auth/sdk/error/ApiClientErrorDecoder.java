@@ -1,6 +1,7 @@
 package pro.teamlead.kubepay.auth.sdk.error;
 
-import pro.teamlead.kubepay.common.json.ObjectMapperWrapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import pro.teamlead.kubepay.common.json.ObjectMapperBuilder;
 import feign.FeignException;
 import feign.Response;
 import feign.codec.ErrorDecoder;
@@ -17,6 +18,8 @@ import java.util.Set;
 public class ApiClientErrorDecoder<T extends Exception> implements ErrorDecoder {
 
     private static final Set<Integer> APPLICATION_ERROR_STATUSES = new HashSet<>();
+
+    private static final ObjectMapper OBJECT_MAPPER = ObjectMapperBuilder.build();
 
     static {
         APPLICATION_ERROR_STATUSES.add(HttpStatus.UNPROCESSABLE_ENTITY.value());
@@ -42,7 +45,7 @@ public class ApiClientErrorDecoder<T extends Exception> implements ErrorDecoder 
 
         try {
             if (response.body() != null) {
-                return ObjectMapperWrapper.fromInputStream(response.body().asInputStream(), type);
+                return OBJECT_MAPPER.readValue(response.body().asInputStream(), type);
             }
         } catch (Exception e) {
             log.error(e.getMessage(), e);

@@ -1,6 +1,7 @@
 package pro.teamlead.kubepay.common.testing.integration.testcase;
 
-import pro.teamlead.kubepay.common.json.ObjectMapperWrapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import pro.teamlead.kubepay.common.json.ObjectMapperBuilder;
 import org.junit.jupiter.api.extension.*;
 import org.springframework.util.ResourceUtils;
 
@@ -12,6 +13,8 @@ import java.nio.file.Path;
 public class FileSourceProvider implements ParameterResolver, BeforeEachCallback {
 
     private volatile String[] paths;
+
+    private final ObjectMapper objectMapper = ObjectMapperBuilder.build();
 
     @Override
     public void beforeEach(ExtensionContext context) {
@@ -40,7 +43,7 @@ public class FileSourceProvider implements ParameterResolver, BeforeEachCallback
             if (type == String.class) {
                 return jsonResource;
             } else {
-                return ObjectMapperWrapper.fromStringJson(jsonResource, type);
+                return objectMapper.readValue(jsonResource, type);
             }
         } catch (IOException e) {
             throw new ParameterResolutionException("Failed to read file", e);

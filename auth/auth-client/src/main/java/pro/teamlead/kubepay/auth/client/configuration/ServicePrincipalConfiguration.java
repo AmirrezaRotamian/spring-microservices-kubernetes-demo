@@ -1,9 +1,9 @@
-package pro.teamlead.kubepay.user.configuration;
+package pro.teamlead.kubepay.auth.client.configuration;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import pro.teamlead.kubepay.auth.client.AuthClient;
 import pro.teamlead.kubepay.auth.sdk.user.ServicePrincipal;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,9 +11,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 
 
-@Slf4j
 @Configuration
 @RequiredArgsConstructor
+@ConditionalOnProperty(prefix = "security", name = "customServicePrincipal", havingValue = "false", matchIfMissing = true)
 public class ServicePrincipalConfiguration {
 
     private final AuthClient authClient;
@@ -29,7 +29,6 @@ public class ServicePrincipalConfiguration {
     public ServicePrincipal servicePrincipal(@Value("${spring.application.name}") final String service,
                                              @Value("${service.key}") final String key) {
         var token = authClient.serviceToken(key);
-        log.warn("Service authToken refreshed");
         return new ServicePrincipal(service, token.getToken());
     }
 }

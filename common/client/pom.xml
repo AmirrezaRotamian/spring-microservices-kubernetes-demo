@@ -36,6 +36,11 @@
             <artifactId>json</artifactId>
             <version>${common.libs.version}</version>
         </dependency>
+        <dependency>
+            <groupId>pro.teamlead.kubepay</groupId>
+            <artifactId>auth-sdk</artifactId>
+            <version>${auth.libs.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
