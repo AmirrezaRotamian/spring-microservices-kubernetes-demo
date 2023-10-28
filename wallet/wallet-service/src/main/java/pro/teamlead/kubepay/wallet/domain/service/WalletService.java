@@ -81,7 +81,7 @@ public class WalletService {
             UserInfo recipientInfo = userClient
                     .getUserInfo(servicePrincipal, user);
 
-            if (!recipientInfo.isEnabled()) {
+            if (!recipientInfo.enabled()) {
                 throw new InvalidRecipientException();
             }
 

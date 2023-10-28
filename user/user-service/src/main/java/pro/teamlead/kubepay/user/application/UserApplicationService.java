@@ -37,8 +37,8 @@ public class UserApplicationService {
         var faker = new Faker();
         var fakeName = faker.name().fullName();
 
-        User user = userService.createUser(request.getUser(),
-                                           request.getPasswordHash(),
+        User user = userService.createUser(request.user(),
+                                           request.passwordHash(),
                                            fakeName);
 
         return new UserInfo(user.getUser(), user.getName(), user.getEnabled());

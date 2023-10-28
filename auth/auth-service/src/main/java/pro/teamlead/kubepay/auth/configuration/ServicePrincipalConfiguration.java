@@ -23,6 +23,6 @@ public class ServicePrincipalConfiguration {
 
         var token = serviceTokenProvider.createSelfServiceToken();
 
-        return new ServicePrincipal(service, token.getToken());
+        return new ServicePrincipal(service, token.token());
     }
 }

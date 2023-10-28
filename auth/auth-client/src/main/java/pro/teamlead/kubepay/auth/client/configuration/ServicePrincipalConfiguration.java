@@ -29,6 +29,6 @@ public class ServicePrincipalConfiguration {
     public ServicePrincipal servicePrincipal(@Value("${spring.application.name}") final String service,
                                              @Value("${service.key}") final String key) {
         var token = authClient.serviceToken(key);
-        return new ServicePrincipal(service, token.getToken());
+        return new ServicePrincipal(service, token.token());
     }
 }

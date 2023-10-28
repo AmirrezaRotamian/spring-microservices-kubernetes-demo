@@ -22,19 +22,19 @@ public class AuthApplicationService {
     private final ServiceTokenProvider serviceTokenProvider;
 
     public AuthToken handleLogin(AuthRequest request) {
-        JwtToken token = authService.authUser(request.getUser(),
-                request.getPassword());
-        return new AuthToken(token.getToken());
+        JwtToken token = authService.authUser(request.user(),
+                request.password());
+        return new AuthToken(token.token());
     }
 
     public AuthToken handleService(@NotNull String key) {
         var token = serviceTokenProvider.getServiceToken(key);
-        return new AuthToken(token.getToken());
+        return new AuthToken(token.token());
     }
 
     public AuthToken handleSignup(AuthRequest request) {
-        JwtToken token = authService.createUser(request.getUser(),
-                request.getPassword());
-        return new AuthToken(token.getToken());
+        JwtToken token = authService.createUser(request.user(),
+                request.password());
+        return new AuthToken(token.token());
     }
 }

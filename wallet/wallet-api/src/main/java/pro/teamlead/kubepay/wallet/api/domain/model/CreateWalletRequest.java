@@ -1,7 +1,5 @@
 package pro.teamlead.kubepay.wallet.api.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -19,10 +17,4 @@ public class CreateWalletRequest {
     @Min(0)
     BigDecimal initialBalance;
 
-    @JsonCreator
-    public CreateWalletRequest(@JsonProperty("user") String user,
-                               @JsonProperty("initialBalance") BigDecimal initialBalance) {
-        this.user = user;
-        this.initialBalance = initialBalance;
-    }
 }
