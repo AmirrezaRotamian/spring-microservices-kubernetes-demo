@@ -1,6 +1,9 @@
 #!/bin/bash
 
-modules=("gateway/gateway-service" "auth/auth-service" "user/user-service" "wallet/wallet-service")
+# Get the directory of the current script
+SCRIPT_DIR="$(pwd)"
+
+modules=("$SCRIPT_DIR/gateway/gateway-service" "$SCRIPT_DIR/auth/auth-service" "$SCRIPT_DIR/user/user-service" "$SCRIPT_DIR/wallet/wallet-service")
 pids=()
 
 # Function to stop services when script is terminated
@@ -16,18 +19,24 @@ stop_services() {
     exit 0
 }
 
-# Trap Ctrl+C and call stop_services() when that happens
-trap stop_services SIGINT
+# Trap various signals and call stop_services() when they occur
+trap stop_services SIGINT SIGTERM SIGQUIT
 
 for module in "${modules[@]}"
 do
     echo "Starting $module..."
-    (cd $module && ./../../.mvn/bin/mvn spring-boot:run &) && pids+=($!)
+    if cd "$module"; then
+        "$SCRIPT_DIR/.mvn/bin/mvn" spring-boot:run &
+        sleep 1  # Give the process a moment to start
+        pids+=($!)
+    else
+        echo "Failed to navigate to $module directory. Skipping..."
+    fi
 done
 
 echo "All services started! Press Ctrl+C to stop."
 
-# Wait forever, until Ctrl+C is pressed
+# Wait forever, until a signal is caught
 while true; do
     sleep 1
 done

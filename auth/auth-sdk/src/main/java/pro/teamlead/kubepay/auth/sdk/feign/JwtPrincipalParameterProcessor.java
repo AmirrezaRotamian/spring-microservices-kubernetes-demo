@@ -21,7 +21,6 @@ public class JwtPrincipalParameterProcessor implements AnnotatedParameterProcess
     public boolean processArgument(AnnotatedParameterProcessor.AnnotatedParameterContext context,
                                    Annotation annotation, Method method) {
         int parameterIndex = context.getParameterIndex();
-        Class<?> parameterType = method.getParameterTypes()[parameterIndex];
         MethodMetadata data = context.getMethodMetadata();
         String name = HttpHeaders.AUTHORIZATION;
         context.setParameterName(name);

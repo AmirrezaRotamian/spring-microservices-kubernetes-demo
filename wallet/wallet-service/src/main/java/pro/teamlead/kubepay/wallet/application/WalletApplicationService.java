@@ -32,8 +32,8 @@ public class WalletApplicationService {
     }
 
     public WalletInfo createWallet(CreateWalletRequest request) {
-        Wallet wallet = walletService.createWallet(request.getUser(),
-                request.getInitialBalance());
+        Wallet wallet = walletService.createWallet(request.user(),
+                request.initialBalance());
 
         return new WalletInfo(wallet.getAddress(), wallet.getBalance());
     }
@@ -51,9 +51,9 @@ public class WalletApplicationService {
         Wallet fromWallet = walletService.findByUser(user.getUser())
                 .orElseThrow(WalletNotFoundException::new);
 
-        Wallet toWallet = walletService.findByAddress(request.getTo())
+        Wallet toWallet = walletService.findByAddress(request.to())
                 .orElseThrow(WalletNotFoundException::new);
 
-        walletService.transferFunds(fromWallet, toWallet, request.getAmount());
+        walletService.transferFunds(fromWallet, toWallet, request.amount());
     }
 }

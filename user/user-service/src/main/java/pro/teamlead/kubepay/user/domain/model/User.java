@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 @Getter
 public class User {
 
+    @SuppressWarnings("squid:S1700")
     private final String user;
     private final String name;
     private volatile Boolean enabled;

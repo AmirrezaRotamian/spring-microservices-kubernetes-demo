@@ -19,6 +19,7 @@ public class Authority implements GrantedAuthority {
     public static final Authority AUTHORITY_VIEW_USER_PASSWORD = new Authority("user:password");
     public static final Authority AUTHORITY_WALLET_CREATE = new Authority("wallet:create");
 
+    @SuppressWarnings("squid:S1700")
     private String authority;
 
     public boolean equals(GrantedAuthority o) {

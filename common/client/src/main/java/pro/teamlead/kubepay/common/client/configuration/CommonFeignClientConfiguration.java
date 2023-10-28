@@ -12,6 +12,7 @@ import pro.teamlead.kubepay.auth.sdk.feign.JwtPrincipalFeignContract;
 public abstract class CommonFeignClientConfiguration {
 
     @Bean
+    @SuppressWarnings("squid:S125")
     public Contract feignContract() {
 
         // The commented-out code below is an alternative way to create a Feign Contract

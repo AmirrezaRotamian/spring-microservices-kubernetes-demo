@@ -17,12 +17,14 @@ import static java.lang.String.format;
 @WireMockEnabled
 public class ApiControllerIntegrationTest {
 
+    @SuppressWarnings("squid:S6813")
     @Autowired
     protected MockMvc mockMvc;
 
     @SpyBean
     protected JwtTokenProvider provider;
 
+    @SuppressWarnings("squid:S6813")
     @Autowired
     protected WireMockServer wireMockServer;
 
