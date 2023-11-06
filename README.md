@@ -426,6 +426,8 @@ Thank you for considering a contribution to this project! I appreciate any help 
 - **Data Storage**: Integrating PostgreSQL as the primary data storage solution.
 - **User Notifications**: Implementing Kafka and WebSockets for real-time user notifications.
 - **Code Coverage**: Achieving full test coverage for all modules and functionalities.
+- **Health Checks & Deployment Strategies**: Implement health checks, liveness, and readiness probes, along with blue-green deployment strategies. This ensures high availability and minimal downtime during application updates.
+- **Token Management**: Incorporate a robust token management system using refresh tokens and access tokens for users. This enhances security and user session management in the application.
 - **Deployment & Scaling**: Configuring ingress for Kubernetes (k8s) to ensure smooth deployment and scalability.
 - **Transport Layer Security**: Implement service mesh (e.g. Istio) or mTLS to ensure encrypted and authenticated communication between microservices.
 - **Configuration and Secret Storage**: Implement HashiCorp Vault for managing configurations and securely storing secrets.
