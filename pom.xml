@@ -15,8 +15,8 @@
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <spring.version>3.1.2</spring.version>
-        <spring-cloud.version>2022.0.4</spring-cloud.version>
+        <spring.version>3.2.0</spring.version>
+        <spring-cloud.version>2023.0.0</spring-cloud.version>
         <lombok.version>1.18.24</lombok.version>
         <jib-maven-plugin.version>3.2.1</jib-maven-plugin.version>
         <swagger.version>2.2.16</swagger.version>

@@ -20,7 +20,7 @@ This project is a demonstration of a simple financial system where users can:
 
 ## Technology Stack and Patterns
 - Java 17+
-- Spring Boot 3.1.2 , Spring Cloud 2022.0.4
+- Spring Boot 3.2.0 , Spring Cloud 2023.0.0
 - Wiremock, JUnit, Interration Tests
 - Kubernetes, Minikube, Docker
 - Microservice Architecture, Value Objects, DDD, DDT
