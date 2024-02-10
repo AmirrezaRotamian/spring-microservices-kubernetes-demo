@@ -12,13 +12,13 @@ import java.nio.file.Path;
 
 public class FileSourceProvider implements ParameterResolver, BeforeEachCallback {
 
+    @SuppressWarnings("squid:S3077")
     private volatile String[] paths;
 
     private final ObjectMapper objectMapper = ObjectMapperBuilder.build();
 
     @Override
     public void beforeEach(ExtensionContext context) {
-        paths = null;
         context.getTestMethod().ifPresent(method -> {
             TestCase testParams = method.getAnnotation(TestCase.class);
             if (testParams != null) {

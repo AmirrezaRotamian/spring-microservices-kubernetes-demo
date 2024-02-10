@@ -48,7 +48,7 @@ public class WalletPublicApiControllerTest extends ApiControllerIntegrationTest 
 
         walletRepository.save(wallet);
 
-        Assertions.assertEquals(wallet.getBalance(), BigDecimal.ZERO);
+        Assertions.assertEquals(BigDecimal.ZERO, wallet.getBalance());
 
         mockMvc.perform(get(WALLET_TOPUP)
                         .header(HttpHeaders.AUTHORIZATION, userToken()))
@@ -56,7 +56,7 @@ public class WalletPublicApiControllerTest extends ApiControllerIntegrationTest 
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.content().json(response));
 
-        Assertions.assertEquals(wallet.getBalance(), new BigDecimal(100));
+        Assertions.assertEquals(new BigDecimal(100), wallet.getBalance());
     }
 
 
@@ -84,8 +84,8 @@ public class WalletPublicApiControllerTest extends ApiControllerIntegrationTest 
                         .withBody(mock)
                         .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)));
 
-        Assertions.assertEquals(senderWallet.getBalance(), amount);
-        Assertions.assertEquals(recipientWallet.getBalance(), BigDecimal.ZERO);
+        Assertions.assertEquals(amount, senderWallet.getBalance());
+        Assertions.assertEquals(BigDecimal.ZERO, recipientWallet.getBalance());
 
         walletRepository.save(senderWallet);
         walletRepository.save(recipientWallet);
@@ -98,8 +98,8 @@ public class WalletPublicApiControllerTest extends ApiControllerIntegrationTest 
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.content().json(response));
 
-        Assertions.assertEquals(senderWallet.getBalance(), BigDecimal.ZERO);
-        Assertions.assertEquals(recipientWallet.getBalance(), amount);
+        Assertions.assertEquals(BigDecimal.ZERO, senderWallet.getBalance());
+        Assertions.assertEquals(amount, recipientWallet.getBalance());
     }
 
 }

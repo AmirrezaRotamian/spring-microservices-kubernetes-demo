@@ -22,6 +22,7 @@ public class Authority implements GrantedAuthority {
     @SuppressWarnings("squid:S1700")
     private String authority;
 
+    @SuppressWarnings("squid:S1201")
     public boolean equals(GrantedAuthority o) {
         if (o == null) return false;
         if (this == o) return true;

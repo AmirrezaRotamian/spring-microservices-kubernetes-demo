@@ -25,7 +25,7 @@ import java.security.interfaces.RSAPublicKey;
 @Configuration
 public class JwtConfiguration {
 
-    @Value("${jwt.ttl}")
+    @Value("${jwt.ttl:3600}")
     @NotNull
     @Min(60)
     @Max(86400)

@@ -15,6 +15,7 @@ import static pro.teamlead.kubepay.common.testing.integration.configuration.Cons
 @ConditionalOnProperty(ENV_PROPERTY_IS_WIREMOCK_ENABLED)
 public class WireMockTestConfiguration {
 
+    @SuppressWarnings("squid:S3077")
     private static volatile WireMockServer mockServer;
 
     public static synchronized WireMockServer getMockServer() {

@@ -8,13 +8,13 @@ import pro.teamlead.kubepay.common.testing.integration.test.ApiControllerIntegra
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class SwaggerApiDocsTest extends ApiControllerIntegrationTest {
+class SwaggerApiDocsTest extends ApiControllerIntegrationTest {
 
     @Value("${springdoc.api-docs.path}")
     private String restApiDocPath;
 
     @Test
-    public void whenSwaggerDocsRequested_thenReturnSuccess() throws Exception {
+    void whenSwaggerDocsRequested_thenReturnSuccess() throws Exception {
 
         mockMvc.perform(get(restApiDocPath))
                 .andExpect(status().isOk())

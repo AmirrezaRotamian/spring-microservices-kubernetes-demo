@@ -9,6 +9,8 @@
     <version>0.0.0</version>
     <packaging>pom</packaging>
 
+    <name>spring-microservices-kubernetes-demo</name>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -25,8 +27,17 @@
         <common.libs.version>0.0.5</common.libs.version>
         <user.libs.version>0.0.5</user.libs.version>
         <wallet.libs.version>0.0.5</wallet.libs.version>
+        <user.service.version>0.0.1</user.service.version>
+        <wallset.service.version>0.0.8</wallset.service.version>
+        <auth.service.version>0.0.7</auth.service.version>
+        <gateway.service.version>0.0.5</gateway.service.version>
         <logbook.version>3.4.0</logbook.version>
         <jib.from.image>openjdk:17-alpine</jib.from.image>
+        <sonar.organization>teamlead</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.coverage.jacoco.xmlReportPaths>
+            ${project.basedir}/coverage/target/site/jacoco-aggregate/jacoco.xml
+        </sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
     <modules>
@@ -35,6 +46,7 @@
         <module>wallet</module>
         <module>common</module>
         <module>user</module>
+        <module>coverage</module>
     </modules>
 
    <dependencyManagement>
@@ -120,6 +132,10 @@
             </plugins>
         </pluginManagement>
         <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+            </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
